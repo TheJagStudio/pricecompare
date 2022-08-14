@@ -128,6 +128,8 @@ def comparision(request):
         menuArr = []
         for key in menuD:
             menuArr.append(menuD[key])
+        url = "https://www.zomato.com/webroutes/location/get?lat="+str(request.session.get("latitude"))+"&lon="+str(request.session.get("longitude"))+"&entity_id=11503&entity_type=subzone&userDefinedLatitude="+str(request.session.get("latitude"))+"&userDefinedLongitude="+str(
+            request.session.get("longitude"))+"&placeId=ChIJT87m7KIrXDkRuLoDtq2oO94&placeType=GOOGLE_PLACE&placeName=Sector%2011&cellId=4133226598302220288&addressId=0&isOrderLocation=0&forceEntityName=Sector%2011&res_id=19499626&pageType=restaurant&persist=true&should_not_detect_near_by_address=0"
         return render(request, "comparision.html", {"dataArr": data, "menuArr": menuArr, "location": location})
     else:
         return redirect("/")
