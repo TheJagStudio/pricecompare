@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+}
+
+nav {
+     width: 100%;
+     padding: 20px 50px;
+     position: fixed;
+     top: 0;
+     box-shadow: 0 1px 20px 0 rgba(40, 44, 63, .1) !important;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     z-index: 99;
+     background-color: #fff;
+}
+
+nav .left {
+     flex: 1;
+     display: flex;
+     align-items: center;
+}
+
+nav .left .logo {
+     margin-right: 40px;
+}
+
+nav .left .logo h1 {
+     color: #28B463;
+     font-size: 30px;
+}
+
+nav .left .location {
+     display: flex;
+     align-items: center;
+     border-bottom: 2px solid #555;
+     overflow: hidden;
+     max-width: 300px;
+     cursor: pointer;
+}
+
+nav .left .location p {
+     color: #28B463;
+     font-size: 18px;
+     font-weight: 600;
+     margin-right: 10px;
+}
+
+nav .left .location span {
+     color: #999;
+     font-size: 12px;
+     margin-top: 4px;
+}
+
+nav .right {
+     flex: 1;
+}
+
+nav .right ul {
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     list-style: none;
+}
+
+nav .right ul li a.active {
+     color: #28B463;
+}
+
+nav .right ul li a {
+     display: flex;
+     align-items: center;
+     text-decoration: none;
+     color: #3d4152;
+     font-size: 18px;
+}
+
+nav .right ul li a:hover {
+     color: #28B463;
+}
+
+nav .right ul li a svg {
+     fill: #28B463;
+     margin-right: 10px;
+}
+
+section{
+     width: 100%;
+     height: 100vh;
+     padding-top: 80px;
+     padding-left: 100px;
+     padding-right: 100px;
+}
+section .container{
+     width: 100%;
+     height: 100%;
+     padding: 60px 40px;
+}
+section .container .formContainer{
+     width: 100%;
+     position: relative;
+}
+section .container .formContainer .search{
+     position: absolute;
+     top: 15px;
+     right: 15px;
+     width: 20px;
+     height: 20px;
+}
+section .container .formContainer input{
+     width: 100%;
+     padding: 15px;
+     outline: none;
+     border: 1px solid #999;
+}
+section .container .formContainer input:focus{
+     border: 1px solid #28B463 !important;
+     box-shadow: 0 1px 10px 0 rgba(40, 44, 63, .1) !important;
+}
+section .container .selection{
+     display: flex;
+     align-items: left;
+     margin-top: 15px;
+     padding-bottom: 10px;
+     width: 100%;
+     border-bottom: 1px solid #aaa;
+}
+section .container .selection h1{
+     padding-right: 20px;
+     font-size: 17px;
+     padding: 2px 10px;
+     background-color: #fff;
+     border: 1px solid #333;
+     margin-right: 10px;
+     color: #333;
+     border-radius: 20px;
+     cursor: pointer;
+}
+section .container .restaurants, section .container .dishes{
+     width: 100%;
+     background-color: #ccc;
+     padding: 40px 60px;
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+     gap: 40px;
+     margin-top: 20px;
+     border-radius: 10px;
+}
+section .container .restaurants .restaurant, section .container .dishes .dish{
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     padding: 10px;
+     background-color: #fff;
+     border-radius: 10px;
+     box-shadow: 0px 10px 20px 0 rgba(40, 44, 63, .1) !important;
+     cursor: pointer;
+}
+section .container .restaurants .restaurant img{
+     width: 100px;
+     height: 100px;
+     border-radius: 10px;
+     margin-right: 20px;
+}
+section .container .restaurants .restaurant .text{
+     display: flex;
+     flex-direction: column;
+     align-items: left;
+     width: 100%;
+}
+section .container .restaurants .restaurant .text .details{
+     display: flex;
+     align-items: center;
+}
+section .container .restaurants .restaurant .text h1,
+section .container .dishes .dish .restName .text h1{
+     font-size: 20px;
+     margin-bottom: 12px;
+     color: #333;
+}
+section .container .restaurants .restaurant .text .details p,
+section .container .dishes .dish .restName .text .detail p{
+     padding-right: 10px;
+     margin-right: 10px;
+     border-right: 1px solid #999;
+     font-size: 15px;
+     color: #999;
+}
+section .container .restaurants .restaurant .text .details p span,
+section .container .dishes .dish .restName .text .detail p span{
+     text-transform: uppercase;
+}
+section .container .restaurants .restaurant .text .details p:last-child,
+section .container .dishes .dish .restName .text .detail p:last-child{
+     border-right: 0;
+}
+
+/*********************************** Dish ***********************************/
+
+section .container .dishes{
+     display: none;
+}
+section .container .dishes .dish{
+     flex-direction: column;
+}
+section .container .dishes .dish .restName{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+     padding-bottom: 10px;
+     border-bottom: 1px dashed #000;
+     padding-left: 10px;
+     padding-right: 10px;
+}
+section .container .dishes .dish .restName .text{
+     display: flex;
+     flex-direction: column;
+}
+section .container .dishes .dish .restName .text h1{
+     margin-bottom: 6px;
+}
+section .container .dishes .dish .restName .text .detail{
+     display: flex;
+}
+section .container .dishes .dish .dishName{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+     margin-top: 20px;
+     padding-left: 10px;
+     padding-right: 10px;
+}
+section .container .dishes .dish .dishName .texts{
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     justify-content: space-around;
+     height: 100%;
+}
+section .container .dishes .dish .dishName .texts p{
+     color: #999;
+}
+section .container .dishes .dish .dishName img{
+     width: 140px;
+     height: 100px;
+}
+
+/*********************************** Dish ***********************************/
+
+/*********** leftSidebar ***********/
+.leftSidebar {
+     height: 100vh;
+     width: 30%;
+     background-color: #fff;
+     position: fixed;
+     top: 0;
+     left: -50%;
+     z-index: 999;
+     overflow-y: scroll;
+     box-shadow: 0 1px 50px 0 rgba(40, 44, 63, .1) !important;
+     transition: .5s ease;
+}
+
+.leftSidebar::-webkit-scrollbar {
+     display: none;
+}
+
+.leftSidebar .content {
+     display: flex;
+     align-items: left;
+     justify-content: space-between;
+     flex-direction: column;
+     width: 30%;
+     padding: 30px;
+     position: fixed;
+     background-color: #fff;
+     box-shadow: 0 1px 20px 0 rgba(40, 44, 63, .1) !important;
+}
+
+.leftSidebar .content img {
+     height: 60px;
+     width: 60px;
+     cursor: pointer;
+     margin-bottom: 20px;
+}
+
+.leftSidebar .content input {
+     width: 100%;
+     padding: 20px;
+     outline: none;
+     border: 1px solid #999;
+}
+
+.leftSidebar .content input:focus {
+     border: 1px solid #28B463 !important;
+     box-shadow: 0 1px 10px 0 rgba(40, 44, 63, .1) !important;
+}
+
+.leftSidebar .citiesContainer {
+     margin: 230px 30px;
+     display: flex;
+     flex-direction: column;
+     align-items: left;
+}
+
+.leftSidebar .citiesContainer .city {
+     padding-bottom: 10px;
+     border-bottom: 1px dashed #999;
+     margin-top: 20px;
+}
+
+.leftSidebar .citiesContainer .city h1 {
+     font-size: 20px;
+     color: #333;
+}
+
+.leftSidebar .citiesContainer .city p {
+     font-size: 12px;
+     color: #999;
+}
+
+footer{
+     width: 100%;
+     padding: 30px 40px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     background-color: #000;
+}
+footer .footerLogo h1{
+     color: #000;
+}
+footer .copyright h1{
+     color: #000;
+     font-size: 20px;
+}
+footer .social{
+     display: flex;
+     align-items: center;
+}
+footer .social img{
+     width: 100%;
+     height: 30px;
+     padding-right: 20px;
+     transition: .5s ease;
+}
+footer .social img:hover{
+     transform: scale(1.2);
+}

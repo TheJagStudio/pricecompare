@@ -1,0 +1,367 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+}
+
+nav {
+     width: 100%;
+     padding: 20px 50px;
+     position: fixed;
+     top: 0;
+     box-shadow: 0 1px 20px 0 rgba(40, 44, 63, .1) !important;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     z-index: 99;
+     background-color: #fff;
+}
+
+nav .left {
+     flex: 1;
+     display: flex;
+     align-items: center;
+}
+
+nav .left .logo {
+     margin-right: 40px;
+}
+
+nav .left .logo h1 {
+     color: #28B463;
+     font-size: 30px;
+}
+
+nav .left .location {
+     display: flex;
+     align-items: center;
+     border-bottom: 2px solid #555;
+     overflow: hidden;
+     max-width: 300px;
+     cursor: pointer;
+}
+
+nav .left .location p {
+     color: #28B463;
+     font-size: 18px;
+     font-weight: 600;
+     margin-right: 10px;
+}
+
+nav .left .location span {
+     color: #999;
+     font-size: 12px;
+     margin-top: 4px;
+}
+
+nav .right {
+     flex: 1;
+}
+
+nav .right ul {
+     display: flex;
+     align-items: center;
+     justify-content: space-around;
+     list-style: none;
+}
+
+nav .right ul li a.active {
+     color: #28B463;
+}
+
+nav .right ul li a {
+     display: flex;
+     align-items: center;
+     text-decoration: none;
+     color: #3d4152;
+     font-size: 18px;
+}
+
+nav .right ul li a:hover {
+     color: #28B463;
+}
+
+nav .right ul li a svg {
+     fill: #28B463;
+     margin-right: 10px;
+}
+
+section.intro {
+     width: 100%;
+     height: 40vh;
+     background-color: #171a29;
+     margin-top: 85px;
+     padding: 50px;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     color: #fff;
+}
+
+section .cityName {
+     width: 100%;
+     margin-bottom: 15px;
+}
+
+section .cityName h1 {
+     font-size: 30px;
+}
+
+section .desc {
+     width: 100%;
+     margin-bottom: 15px;
+}
+
+section .desc p {
+     font-size: 15px;
+}
+
+section .form {
+     display: flex;
+     align-items: center;
+     width: 100%;
+}
+
+section .form input {
+     padding: 8px;
+     width: 30%;
+     font-size: 15px;
+     outline: none;
+     border: none;
+}
+
+section .form a {
+     text-decoration: none;
+     text-transform: uppercase;
+     width: 10%;
+     padding: 7px;
+     background-color: #28B463;
+     color: #fff;
+     font-weight: 600;
+     text-align: center;
+}
+
+
+section.aboutCity {
+     width: 100%;
+     height: 40vh;
+     margin-top: 60px;
+     padding: 50px;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     /* background-color: blue; */
+}
+
+section.aboutCity .container {
+     width: 100%;
+}
+
+section.aboutCity .container h1 {
+     font-size: 30px;
+     font-weight: 500;
+     margin-bottom: 20px;
+}
+
+section.aboutCity .container h1 span {
+     font-weight: 600;
+     color: #28B463;
+}
+
+section.aboutCity .container p {
+     color: #999;
+     font-size: 18px;
+     letter-spacing: .5px;
+}
+
+
+section.restList{
+     width: 100%;
+     margin-top: 20px;
+     padding: 50px;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     /* background-color: red; */
+}
+section.restList .heading{
+     width: 100%;
+     margin-bottom: 40px;
+}
+section.restList .heading h1{
+     font-size: 30px;
+     font-weight: 500;
+     color: #333;
+}
+section.restList .restaurants{
+     width: 100%;
+     overflow: hidden;
+     display: flex;
+     word-wrap: wrap;
+}
+section.restList .restaurants .restaurant{
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+     justify-content: space-between;
+     padding: 15px;
+     width: 300px;
+     height: 350px;
+     max-height: 400px;
+     margin-right: 20px;
+     background-color: #fff;
+     border: 1px solid #fff;
+}
+section.restList .restaurants .restaurant:hover{
+     border: 1px solid #999;
+     box-shadow: 0px 0px 30px 0px rgba(40, 44, 63, .1) !important;
+}
+section.restList .restaurants .restaurant .img{
+     width: 100%;
+     min-height: 40%;
+     max-height: auto;
+     margin-bottom: 20px;
+}
+section.restList .restaurants .restaurant .img img{
+     width: 100%;
+     height: 100%;
+}
+section.restList .restaurants .restaurant .restNameAndStuff{
+     width: 100%;
+     margin-bottom: 15px;
+}
+section.restList .restaurants .restaurant .restNameAndStuff p{
+     font-size: 18px;
+}
+section.restList .restaurants .restaurant .restNameAndStuff span{
+     font-size: 12px;
+     color: #999;
+}
+section.restList .restaurants .restaurant .restDetails{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     width: 100%;
+     font-size: 13px;
+}
+section.restList .restaurants .restaurant .restDetails hr{
+     height: 30px;
+     width: 2px;
+     border: none;
+     background-color: #999;
+}
+section.restList .restaurants .restaurant .restDetails p{
+     color: #999;
+}
+section.restList .restaurants .restaurant .restDetails span{
+     text-transform: uppercase;
+}
+section.restList .restaurants .restaurant .restDetails .rating p{
+     background-color: green;
+     padding: 5px 15px;
+     color: #fff;
+}
+
+footer{
+     width: 100%;
+     padding: 30px 40px;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     background-color: #000;
+}
+footer .footerLogo h1{
+     color: #fff;
+}
+footer .copyright h1{
+     color: #fff;
+     font-size: 20px;
+}
+footer .social{
+     display: flex;
+     align-items: center;
+}
+footer .social img{
+     width: 100%;
+     height: 30px;
+     padding-right: 20px;
+     transition: .5s ease;
+}
+footer .social img:hover{
+     transform: scale(1.2);
+}
+
+/*********** leftSidebar ***********/
+.leftSidebar {
+     height: 100vh;
+     width: 30%;
+     background-color: #fff;
+     position: fixed;
+     top: 0;
+     left: -50%;
+     z-index: 999;
+     overflow-y: scroll;
+     box-shadow: 0 1px 50px 0 rgba(40, 44, 63, .1) !important;
+     transition: .5s ease;
+}
+
+.leftSidebar::-webkit-scrollbar {
+     display: none;
+}
+
+.leftSidebar .content {
+     display: flex;
+     align-items: left;
+     justify-content: space-between;
+     flex-direction: column;
+     width: 30%;
+     padding: 30px;
+     position: fixed;
+     background-color: #fff;
+     box-shadow: 0 1px 20px 0 rgba(40, 44, 63, .1) !important;
+}
+
+.leftSidebar .content img {
+     height: 60px;
+     width: 60px;
+     cursor: pointer;
+     margin-bottom: 20px;
+}
+
+.leftSidebar .content input {
+     width: 100%;
+     padding: 20px;
+     outline: none;
+     border: 1px solid #999;
+}
+
+.leftSidebar .content input:focus {
+     border: 1px solid #28B463 !important;
+     box-shadow: 0 1px 10px 0 rgba(40, 44, 63, .1) !important;
+}
+
+.leftSidebar .citiesContainer {
+     margin: 230px 30px;
+     display: flex;
+     flex-direction: column;
+     align-items: left;
+}
+
+.leftSidebar .citiesContainer .city {
+     padding-bottom: 10px;
+     border-bottom: 1px dashed #999;
+     margin-top: 20px;
+}
+
+.leftSidebar .citiesContainer .city h1 {
+     font-size: 20px;
+     color: #333;
+}
+
+.leftSidebar .citiesContainer .city p {
+     font-size: 12px;
+     color: #999;
+}
