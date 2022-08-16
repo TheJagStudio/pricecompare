@@ -1,1 +1,1 @@
-web: gunicorn pricecompare.wsgi
+web: gunicorn pricecompare.wsgi public/

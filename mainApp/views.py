@@ -119,7 +119,8 @@ def index(request):
 def zomatoData(locationI, resturantI, latitudeI, longitudeI):
     payload = {}
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
+        'Cookie': 'PHPSESSID=bc1ffc3f210214de73d55aa404d1c101; csrf=b06efb174ea5180ef8ab5bf1a8fd2e89; fbcity=11736; fbtrack=fce8797023ed82c4514f216fad6830a5; fre=0; rd=1380000; zl=en; AWSALBTG=ujrNOFIbXZx1x1B8NaWKYlfh7DyUczbP69iTzCrXQUpqQ7vHEflWOhkkbNpPXMLcYlgPE1zy9QPNpkKrTl/5o9ajvtoCxq5zoyGUCOuDQ871ISA54T5xUJZHKkNlzoBANCPyCaRfXeVPmciIk+/UdgmMxfVZ6UYmqQgo2/LAWxOs; AWSALBTGCORS=ujrNOFIbXZx1x1B8NaWKYlfh7DyUczbP69iTzCrXQUpqQ7vHEflWOhkkbNpPXMLcYlgPE1zy9QPNpkKrTl/5o9ajvtoCxq5zoyGUCOuDQ871ISA54T5xUJZHKkNlzoBANCPyCaRfXeVPmciIk+/UdgmMxfVZ6UYmqQgo2/LAWxOs'
     }
     location = locationI
     resturant = resturantI.replace(" ", "%20")
@@ -128,29 +129,32 @@ def zomatoData(locationI, resturantI, latitudeI, longitudeI):
     url = "https://www.zomato.com/webroutes/location/search?q=" + \
         location+"&lat="+latitude+"&lon="+longitude
     response = requests.request("GET", url, headers=headers, data=payload)
-    data = response.json()
-    entity_id = str(data["locationSuggestions"][0]["entity_id"])
-    entity_type = str(data["locationSuggestions"][0]["entity_type"])
-    latitude = str(data["locationSuggestions"][0]["entity_latitude"])
-    longitude = str(data["locationSuggestions"][0]["entity_longitude"])
-    location = str(data["locationSuggestions"][0]["entity_name"])
-    place_id = str(data["locationSuggestions"][0]["place"]["place_id"])
-    place_type = str(data["locationSuggestions"][0]["place"]["place_type"])
-    place_name = str(data["locationSuggestions"][0]["place"]["place_name"])
-    cellId = str(data["locationSuggestions"][0]["place"]["cell_id"])
-    isOrderLocation = str(data["locationSuggestions"][0]["is_order_location"])
-    o2_serviceablity = str(data["locationSuggestions"]
+    try:
+        data = response.json()["locationSuggestions"]
+    except ValueError:
+        print(response.text)
+        print('Bad Data from Server. Response content is not valid JSON')
+        return [["none", 0, "none", ""]]
+    entity_id = str(data[0]["entity_id"])
+    entity_type = str(data[0]["entity_type"])
+    latitude = str(data[0]["entity_latitude"])
+    longitude = str(data[0]["entity_longitude"])
+    location = str(data[0]["entity_name"])
+    place_id = str(data[0]["place"]["place_id"])
+    place_type = str(data[0]["place"]["place_type"])
+    place_name = str(data[0]["place"]["place_name"])
+    cellId = str(data[0]["place"]["cell_id"])
+    isOrderLocation = str(data[0]["is_order_location"])
+    o2_serviceablity = str(data
                            [0]["place"]["o2_serviceablity"])
-    delivery_subzone_id = str(
-        data["locationSuggestions"][0]["delivery_subzone_id"])
     try:
         userDefinedLatitude = str(
-            data["locationSuggestions"][0]["userDefinedLatitude"])
+            data[0]["userDefinedLatitude"])
     except:
         userDefinedLatitude = "null"
     try:
         userDefinedLongitude = str(
-            data["locationSuggestions"][0]["userDefinedLongitude"])
+            data[0]["userDefinedLongitude"])
     except:
         userDefinedLongitude = "null"
     url = "https://www.zomato.com/webroutes/location/get?lat="+latitude+"&lon="+longitude+"&entity_id="+entity_id + \
@@ -159,26 +163,30 @@ def zomatoData(locationI, resturantI, latitudeI, longitudeI):
         "&forceEntityName="+location+"&res_id=111989&o2Serviceable=" + \
         o2_serviceablity+"&pageType=restaurant&persist=true"
     response = requests.request("GET", url, headers=headers, data=payload)
-    data = response.json()
-    entity_id = str(data["locationDetails"]["entityId"])
-    entity_type = str(data["locationDetails"]["entityType"])
-    cityId = str(data["locationDetails"]["cityId"])
-    cityName = str(data["locationDetails"]["cityName"])
-    placeId = str(data["locationDetails"]["placeId"])
-    placeType = str(data["locationDetails"]["placeType"])
-    cellId = str(data["locationDetails"]["cellId"])
-    deliverySubzoneId = str(data["locationDetails"]["deliverySubzoneId"])
-    orderLocationName = str(data["locationDetails"]["orderLocationName"])
-    displayTitle = str(data["locationDetails"]["displayTitle"])
-    o2Serviceable = str(data["locationDetails"]["o2Serviceable"])
-    placeName = str(data["locationDetails"]["placeName"])
-    isO2City = str(data["locationDetails"]["isO2City"])
-    isO2OnlyCity = str(data["locationDetails"]["isO2OnlyCity"])
-    otherRestaurantsUrl = str(data["locationDetails"]["otherRestaurantsUrl"])
-    isOrderLocation = str(data["locationDetails"]["isOrderLocation"])
-    latitude = str(data["locationDetails"]["latitude"])
-    longitude = str(data["locationDetails"]["longitude"])
-    entityName = str(data["locationDetails"]["entityName"])
+    try:
+        data = response.json()["locationDetails"]
+    except ValueError:
+        print('Bad Data from Server. Response content is not valid JSON')
+        return [["none", 0, "none", ""]]
+    entity_id = str(data["entityId"])
+    entity_type = str(data["entityType"])
+    cityId = str(data["cityId"])
+    cityName = str(data["cityName"])
+    placeId = str(data["placeId"])
+    placeType = str(data["placeType"])
+    cellId = str(data["cellId"])
+    deliverySubzoneId = str(data["deliverySubzoneId"])
+    orderLocationName = str(data["orderLocationName"])
+    displayTitle = str(data["displayTitle"])
+    o2Serviceable = str(data["o2Serviceable"])
+    placeName = str(data["placeName"])
+    isO2City = str(data["isO2City"])
+    isO2OnlyCity = str(data["isO2OnlyCity"])
+    otherRestaurantsUrl = str(data["otherRestaurantsUrl"])
+    isOrderLocation = str(data["isOrderLocation"])
+    latitude = str(data["latitude"])
+    longitude = str(data["longitude"])
+    entityName = str(data["entityName"])
     if userDefinedLatitude == "null":
         userDefinedLatitude = "0"
     if userDefinedLongitude == "null":
@@ -191,18 +199,25 @@ def zomatoData(locationI, resturantI, latitudeI, longitudeI):
         resturant+"&context=order&searchMetadata={}"
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    data = response.json()
     try:
-        page_url = data["results"][0]["order"]["actionInfo"]["clickUrl"]
+        data = response.json()["results"]
+    except ValueError:
+        print('Bad Data from Server. Response content is not valid JSON')
+    try:
+        page_url = data[0]["order"]["actionInfo"]["clickUrl"]
     except:
-        page_url = data["results"][0]["actionInfo"]["clickUrl"]
+        page_url = data[0]["actionInfo"]["clickUrl"]
     url = "https://www.zomato.com/webroutes/getPage?page_url="+page_url+"&isMobile=0"
     # print(url)
     response = requests.request("GET", url, headers=headers, data=payload)
-    data = response.json()
+    try:
+        data = response.json()["page_data"]
+    except ValueError:
+        print('Bad Data from Server. Response content is not valid JSON')
+        return [["none", 0, "none", ""]]
     # print(len(data["page_data"]["order"]["menuList"]["menus"]))
     foodArr = []
-    for food in data["page_data"]["order"]["menuList"]["menus"]:
+    for food in data["order"]["menuList"]["menus"]:
         for i in range(0, len(food["menu"]["categories"])):
             for j in range(0, len(food["menu"]["categories"][i]["category"]["items"])):
                 name = food["menu"]["categories"][i]["category"]["items"][j]["item"]["name"]
