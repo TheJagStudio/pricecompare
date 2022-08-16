@@ -194,7 +194,7 @@ section.comparision{
      width: 100%;
      margin-top: 5%;
      display: flex;
-     align-items: center;
+     align-items: top;
      justify-content: space-between;
 }
 section.comparision .swiggy{
@@ -257,7 +257,7 @@ section.comparision .dishes{
      align-items: center;
      justify-content: space-between;
      width: 100%;
-     max-height: 500px;
+     height: 180px;
      margin-top: 50px;
      padding: 20px;
      border-radius: 15px;

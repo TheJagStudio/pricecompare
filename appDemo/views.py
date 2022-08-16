@@ -18,14 +18,17 @@ def searchResults(request):
     url = "https://www.swiggy.com/dapi/restaurants/search/v3?lat=" + str(request.session.get("latitude"))+"&lng=" + str(request.session.get(
         "longitude"))+"&str="+input+"&sldEnabled=false&trackingId=undefined&submitAction=ENTER&queryUniqueId=6e7a6ede-adda-2379-3c91-2d7f69426667&selectedPLTab="+DataType
     response = requests.request("GET", url)
-    if DataType == "DISH":
-        data = response.json()[
-            "data"]["cards"][0]["groupedCard"]["cardGroupMap"][DataType]["cards"]
-        return HttpResponse(json.dumps(data), content_type="application/json")
-    else:
-        dataArr = response.json(
-        )["data"]["cards"][0]["groupedCard"]["cardGroupMap"][DataType]["cards"]
-        return HttpResponse(json.dumps(dataArr), content_type="application/json")
+    try:
+        if DataType == "DISH":
+            data = response.json()[
+                "data"]["cards"][0]["groupedCard"]["cardGroupMap"][DataType]["cards"]
+            return HttpResponse(json.dumps(data), content_type="application/json")
+        else:
+            dataArr = response.json(
+            )["data"]["cards"][0]["groupedCard"]["cardGroupMap"][DataType]["cards"]
+            return HttpResponse(json.dumps(dataArr), content_type="application/json")
+    except:
+        return HttpResponse("No Results Found")
 
 
 @csrf_exempt
