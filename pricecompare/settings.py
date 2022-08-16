@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*!k08vkk88z_6=ovq$f$)-xsw-6ubett#fg^t0!7=2vp*8jify
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "foodcompare.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
